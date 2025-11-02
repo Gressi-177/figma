@@ -128,8 +128,9 @@ export class FileStorageService {
 
     for (const fileInfo of upload.files) {
       const absolutePath = path.join(process.cwd(), fileInfo.path);
+      const fileKey = fileInfo.filename.replace(/\.json$/, '');
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      filesContent[fileInfo.filename] = this.readFileContent(absolutePath);
+      filesContent[fileKey] = this.readFileContent(absolutePath);
     }
 
     return {
